@@ -5,19 +5,20 @@ import Weather from './components/Weather';
 import ToDo from './components/ToDo';
 import Headlines from './components/Headlines';
 import Stocks from './components/Stocks';
-import TheMet from './components/TheMet';
+import Art from './components/Art';
+import './index.css';
 
 function App() {
   return (
     <>
       <Navbar />
+      {/* <GoogleSearch /> */}
       <Calendar />
-      <GoogleSearch />
-      <Weather />
       <ToDo />
+      <Weather />
       <Headlines />
       <Stocks />
-      <TheMet />
+      <Art />
     </>
   );
 }
