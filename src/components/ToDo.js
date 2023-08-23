@@ -1,9 +1,29 @@
-function ToDo() {
+export default function ToDo() {
   return (
-    <nav>
-      <h2>ToDo</h2>
-    </nav>
+    <div>
+      <Logo />
+      <Form />
+      <ToDoList />
+      <Stats />
+    </div>
   );
 }
 
-export default ToDo;
+function Logo() {
+  return <h2>ToDo</h2>;
+}
+
+function Form() {
+  return (
+    <div className='form'>
+      <h5>Add An Item</h5>
+    </div>
+  );
+}
+function ToDoList() {
+  return <div className='todo-list'>List</div>;
+}
+
+function Stats() {
+  return <footer className='stats'>You have X items on your list</footer>;
+}
