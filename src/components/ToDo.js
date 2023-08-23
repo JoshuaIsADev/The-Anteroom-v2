@@ -1,28 +1,34 @@
 import { useState } from 'react';
 
-const initialItems = [
-  {
-    id: 1,
-    description: 'Finish Anteroom v2 design',
-    quantity: '',
-    completed: true,
-  },
-  {
-    id: 2,
-    description: 'Convert the Anteroom into a React app',
-    quantity: '',
-    completed: false,
-  },
-  { id: 3, description: 'Pack passport', quantity: 1, completed: false },
-];
-
 export default function ToDo() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
+
+  function handleDeleteItem(id) {
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
+
+  function handleToggleItem(id) {
+    setItems((item) =>
+      items.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
+      )
+    );
+  }
+
   return (
     <div>
       <Logo />
-      <Form />
-      <ToDoList />
-      <Stats />
+      <Form onAddItems={handleAddItems} />
+      <ToDoList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+      />
+      <Stats items={items} />
     </div>
   );
 }
@@ -31,7 +37,7 @@ function Logo() {
   return <h2>ToDo</h2>;
 }
 
-function Form() {
+function Form({ onAddItems }) {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState('');
 
@@ -41,7 +47,8 @@ function Form() {
     if (!description) return;
 
     const newItem = { description, quantity, completed: false, id: Date.now() };
-    console.log(newItem);
+
+    onAddItems(newItem);
 
     setDescription('');
     setQuantity('');
@@ -67,27 +74,52 @@ function Form() {
   );
 }
 
-function ToDoList() {
+function ToDoList({ items, onDeleteItem, onToggleItem }) {
   return (
     <ul className='todo-list'>
-      {initialItems.map((item) => (
-        <Item item={item} key={item.id} />
+      {items.map((item) => (
+        <Item
+          item={item}
+          onDeleteItem={onDeleteItem}
+          onToggleItem={onToggleItem}
+          key={item.id}
+        />
       ))}
     </ul>
   );
 }
 
-function Item({ item }) {
+function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li>
+      <input
+        type='checkbox'
+        value={item.completed}
+        onChange={() => onToggleItem(item.id)}
+      />
       <span style={item.completed ? { background: '#F6EA48' } : {}}>
         {item.description} {item.quantity}
       </span>
-      <button>&times;</button>
+      <button onClick={() => onDeleteItem(item.id)}>&times;</button>
     </li>
   );
 }
 
-function Stats() {
-  return <footer className='stats'>You have X items on your list</footer>;
+function Stats({ items }) {
+  if (!items.length) return <p className='footer'>Please add an item</p>;
+
+  const numItems = items.length;
+  const numCompleted = items.filter((item) => item.completed).length;
+  const percentCompleted = Math.round((numCompleted / numItems) * 100);
+
+  return (
+    <footer className='stats'>
+      <h5>
+        {percentCompleted === 100
+          ? 'All completed. Congrats!'
+          : `You have ${numItems} items and have completed ${numCompleted}
+        (${percentCompleted}%)`}
+      </h5>
+    </footer>
+  );
 }
