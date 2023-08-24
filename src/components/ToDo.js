@@ -105,7 +105,7 @@ function Item({ item, onDeleteItem, onToggleItem }) {
         <input
           // className='checkbox'
           type='checkbox'
-          value={item.completed}
+          checked={item.completed}
           onChange={() => onToggleItem(item.id)}
         />
         <span class='checkbox'></span>
