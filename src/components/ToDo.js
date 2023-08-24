@@ -34,7 +34,11 @@ export default function ToDo() {
 }
 
 function Logo() {
-  return <h2>ToDo</h2>;
+  return (
+    <nav className='component-title'>
+      <h2>ToDo</h2>
+    </nav>
+  );
 }
 
 function Form({ onAddItems }) {
@@ -55,25 +59,27 @@ function Form({ onAddItems }) {
   }
 
   return (
-    <form className='container' onSubmit={handleSubmit}>
-      <h5>Add An Item</h5>
-      <div className='todo-form'>
-        <input
-          type='text'
-          placeholder=''
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          className='todo-input-qty'
-          type='number'
-          placeholder=''
-          value={quantity}
-          onChange={(e) => setQuantity(Number(e.target.value))}
-        />
-        <button>+</button>
-      </div>
-    </form>
+    <section className='container'>
+      <form onSubmit={handleSubmit}>
+        <h5 className='todo-form-title'>Add An Item</h5>
+        <div className='todo-form'>
+          <input
+            type='text'
+            placeholder=''
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <input
+            className='todo-input-qty'
+            type='number'
+            placeholder=''
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+          />
+          <button>+</button>
+        </div>
+      </form>
+    </section>
   );
 }
 
@@ -94,8 +100,8 @@ function ToDoList({ items, onDeleteItem, onToggleItem }) {
 
 function Item({ item, onDeleteItem, onToggleItem }) {
   return (
-    <li>
-      <label className='checkbox-container'>
+    <li className='checkbox-container'>
+      <label>
         <input
           // className='checkbox'
           type='checkbox'
