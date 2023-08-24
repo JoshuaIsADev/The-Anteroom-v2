@@ -20,7 +20,7 @@ export default function ToDo() {
   }
 
   return (
-    <div>
+    <div className='container'>
       <Logo />
       <Form onAddItems={handleAddItems} />
       <ToDoList
@@ -55,21 +55,24 @@ function Form({ onAddItems }) {
   }
 
   return (
-    <form className='form' onSubmit={handleSubmit}>
+    <form className='container' onSubmit={handleSubmit}>
       <h5>Add An Item</h5>
-      <input
-        type='text'
-        placeholder=''
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        type='number'
-        placeholder=''
-        value={quantity}
-        onChange={(e) => setQuantity(Number(e.target.value))}
-      />
-      <button>+</button>
+      <div className='todo-form'>
+        <input
+          type='text'
+          placeholder=''
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <input
+          className='todo-input-qty'
+          type='number'
+          placeholder=''
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
+        />
+        <button>+</button>
+      </div>
     </form>
   );
 }
@@ -93,11 +96,15 @@ function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li>
       <input
+        className='todo-checkbox'
         type='checkbox'
         value={item.completed}
         onChange={() => onToggleItem(item.id)}
       />
-      <span style={item.completed ? { background: '#F6EA48' } : {}}>
+      <span
+        className='todo-list'
+        style={item.completed ? { background: '#F6EA48' } : {}}
+      >
         {item.description} {item.quantity}
       </span>
       <button onClick={() => onDeleteItem(item.id)}>&times;</button>
@@ -106,7 +113,7 @@ function Item({ item, onDeleteItem, onToggleItem }) {
 }
 
 function Stats({ items }) {
-  if (!items.length) return <p className='footer'>Please add an item</p>;
+  if (!items.length) return <h5 className='footer'>Please add an item</h5>;
 
   const numItems = items.length;
   const numCompleted = items.filter((item) => item.completed).length;

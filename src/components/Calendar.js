@@ -52,7 +52,8 @@ console.log(weekDates);
 
 const Calendar = () => {
   const today = new Date();
-  const month = monthNames[today.getMonth()];
+  const month = monthNames[today.getMonth()].slice(0, 3);
+  // const shortYear = today.getFullYear().toString().slice(2, 4);
 
   // const startingDate = new Date(today);
   // startingDate.setDate(today.getDate() - today.getDay());
@@ -64,7 +65,8 @@ const Calendar = () => {
   return (
     <div>
       <div>
-        <h2>{`${month} ${today.getDate()}, ${today.getFullYear()} `}</h2>
+        <h3>{`${month} ${today.getDate()}`}</h3>
+        <h4>{`${today.getFullYear()} `}</h4>
       </div>
       <div>
         <DayComponent day='Sun' />
