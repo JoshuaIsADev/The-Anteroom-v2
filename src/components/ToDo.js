@@ -95,18 +95,21 @@ function ToDoList({ items, onDeleteItem, onToggleItem }) {
 function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li>
-      <input
-        className='todo-checkbox'
-        type='checkbox'
-        value={item.completed}
-        onChange={() => onToggleItem(item.id)}
-      />
-      <span
-        className='todo-list'
-        style={item.completed ? { background: '#F6EA48' } : {}}
-      >
-        {item.description} {item.quantity}
-      </span>
+      <label className='checkbox-container'>
+        <input
+          // className='checkbox'
+          type='checkbox'
+          value={item.completed}
+          onChange={() => onToggleItem(item.id)}
+        />
+        <span class='checkbox'></span>
+        <span
+          className='todo-list'
+          style={item.completed ? { background: '#F6EA48' } : {}}
+        >
+          {item.description} {item.quantity}
+        </span>
+      </label>
       <button onClick={() => onDeleteItem(item.id)}>&times;</button>
     </li>
   );
