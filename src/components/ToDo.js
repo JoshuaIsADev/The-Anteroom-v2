@@ -100,24 +100,30 @@ function ToDoList({ items, onDeleteItem, onToggleItem }) {
 
 function Item({ item, onDeleteItem, onToggleItem }) {
   return (
-    <li className='checkbox-container'>
-      <label>
-        <input
-          // className='checkbox'
-          type='checkbox'
-          checked={item.completed}
-          onChange={() => onToggleItem(item.id)}
-        />
-        <span class='checkbox'></span>
-        <span
-          className='todo-list'
-          style={item.completed ? { background: '#F6EA48' } : {}}
-        >
-          {item.description} {item.quantity}
-        </span>
-      </label>
-      <button onClick={() => onDeleteItem(item.id)}>&times;</button>
-    </li>
+    <>
+      <hr />
+      <li className='checkbox-container'>
+        <label>
+          <input
+            // className='checkbox'
+            type='checkbox'
+            checked={item.completed}
+            onChange={() => onToggleItem(item.id)}
+          />
+          <span className='checkbox'></span>
+          <span
+            className='todo-list'
+            style={item.completed ? { background: '#0f1011' } : {}}
+          >
+            {item.description} {item.quantity}
+          </span>
+        </label>
+        <button className='button-delete' onClick={() => onDeleteItem(item.id)}>
+          &times;
+        </button>
+      </li>
+      <hr />
+    </>
   );
 }
 
@@ -129,7 +135,7 @@ function Stats({ items }) {
   const percentCompleted = Math.round((numCompleted / numItems) * 100);
 
   return (
-    <footer className='stats'>
+    <footer className='footer-stats'>
       <h5>
         {percentCompleted === 100
           ? 'All completed. Congrats!'

@@ -5,6 +5,8 @@ html {
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
   font-size: 11px;
+  color: #fff;
+  background-color: #0f1011;
 }
 
 body {
@@ -64,8 +66,9 @@ input[type='text'],
   width: 100%;
   padding: 0.9rem;
   font-size: 1.4rem;
-  border: 0.5px solid black;
+  border: none;
   border-radius: 0px;
+  background-color: #1d1e1f;
 }
 
 input[type='checkbox'] {
@@ -74,47 +77,68 @@ input[type='checkbox'] {
   cursor: pointer;
   height: 0;
   width: 0;
+  border: none;
+  border-radius: 0px;
+  background-color: #1d1e1f;
+}
+
+button {
+  padding: 0 2rem;
+  font-size: 2rem;
+  border: none;
+  border-radius: 0px;
+  background-color: #1d1e1f;
+}
+
+hr {
+  position: absolute;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: -1.3rem;
+  left: 0;
+  right: 0;
+  border: 0.5px solid rgb(39, 39, 39);
+  border-bottom: none;
+}
+
+.button-delete {
+  font-size: 2rem;
+  background-color: #0f1011;
 }
 
 .checkbox-container {
   padding-left: 3rem;
   margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .checkbox {
   position: absolute;
+  margin-top: 0.3rem;
   left: 2rem;
-  height: 2rem;
+  height: 1rem;
   width: 2rem;
-  border: 0.5px solid black;
+  border: 1px solid rgb(96, 96, 96);
   border-radius: 0px;
 }
-
-/* .checkbox:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-
-.checkbox-container input:checked ~ .checkmark {
-  background-color: #2196f3;
-}
-
-.checkbox-container input:checked ~ .checkbox:after {
+.checkbox::after {
+  content: ' '; /* Unicode character for checkmark */
+  font-size: 16px;
+  color: #fff;
   display: block;
+  text-align: center;
+  line-height: 1.8rem;
+  transform: scale(0);
+  transition: transform 0.1s ease;
 }
 
-.checkbox-container .checkbox:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-} */
+input[type='checkbox']:checked + .checkbox::after {
+  transform: scale(1);
+  height: 1rem;
+  background-color: #fff;
+}
 
 .container {
   width: 100%;
@@ -132,7 +156,7 @@ input[type='checkbox'] {
   width: 100%;
   display: flex;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 6rem;
 }
 
 .todo-input-qty {
@@ -142,32 +166,11 @@ input[type='checkbox'] {
 .todo-list {
   font-size: 1.4rem;
   font-weight: 400;
-  padding-left: 0rem;
-  padding-bottom: 0rem;
-  vertical-align: middle;
+  padding-left: 1.5rem;
+}
+
+.footer-stats {
+  margin-top: 6rem;
 }
 
 /* test */
-.checkbox {
-  position: absolute;
-  left: 2rem;
-  height: 2rem;
-  width: 2rem;
-  border: 0.5px solid black;
-  border-radius: 0px;
-}
-.checkbox::after {
-  content: '\2713'; /* Unicode character for checkmark */
-  font-size: 16px;
-  color: black;
-  display: block;
-  text-align: center;
-  line-height: 1.8rem;
-  transform: scale(0);
-  transition: transform 0.05s ease;
-}
-
-input[type='checkbox']:checked + .checkbox::after {
-  transform: scale(1);
-  background-color: #f6ea48;
-}
