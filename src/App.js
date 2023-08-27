@@ -12,13 +12,25 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <GoogleSearch /> */}
-      <Calendar />
-      <ToDo />
-      <Weather />
-      <Headlines />
-      <Stocks />
-      <Art />
+      <main className='components'>
+        {/* <GoogleSearch /> */}
+        {/* <Calendar /> */}
+        <section className='component-card'>
+          <ToDo />
+        </section>
+        <section className='component-card'>
+          <Weather />
+        </section>
+        <section className='component-card'>
+          <Headlines />
+        </section>
+        <section className='component-card'>
+          <Stocks />
+        </section>
+        <section className='component-card'>
+          <Art />
+        </section>
+      </main>
     </>
   );
 }

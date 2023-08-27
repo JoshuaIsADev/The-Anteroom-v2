@@ -59,7 +59,7 @@ function Form({ onAddItems }) {
   }
 
   return (
-    <section className='container'>
+    <>
       <form onSubmit={handleSubmit}>
         <h5 className='todo-form-title'>Add An Item</h5>
         <div className='todo-form'>
@@ -79,7 +79,7 @@ function Form({ onAddItems }) {
           <button>+</button>
         </div>
       </form>
-    </section>
+    </>
   );
 }
 
@@ -101,7 +101,7 @@ function ToDoList({ items, onDeleteItem, onToggleItem }) {
 function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <>
-      <hr />
+      <hr className='hr-todo' />
       <li className='checkbox-container'>
         <label>
           <input
@@ -122,7 +122,7 @@ function Item({ item, onDeleteItem, onToggleItem }) {
           &times;
         </button>
       </li>
-      <hr />
+      <hr className='hr-todo' />
     </>
   );
 }

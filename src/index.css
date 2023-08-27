@@ -7,17 +7,17 @@ html {
   font-size: 11px;
   color: #fff;
   background-color: #0f1011;
+  overscroll-behavior: contain;
 }
 
 body {
-  padding: 2rem;
 }
 
 h1 {
-  font-size: 3.2rem;
-  font-weight: 300;
+  font-size: 2rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: -0.4rem;
+  letter-spacing: -0.1rem;
 }
 
 h2 {
@@ -83,7 +83,7 @@ input[type='checkbox'] {
 }
 
 button {
-  padding: 0 2rem;
+  padding: 0 1rem;
   font-size: 2rem;
   border: none;
   border-radius: 0px;
@@ -91,14 +91,54 @@ button {
 }
 
 hr {
-  position: absolute;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  margin-top: -1.3rem;
+  /* left: 0;
+  right: 0;
+  border: 0.5px solid rgb(39, 39, 39);
+  border-bottom: none; */
+}
+
+.hr-slider {
   left: 0;
   right: 0;
   border: 0.5px solid rgb(39, 39, 39);
   border-bottom: none;
+}
+
+.hr-indicator {
+  width: 20%;
+  border: none;
+  height: 2px;
+  color: #fff;
+  background-color: #fff;
+  position: absolute;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  top: 10.45rem;
+}
+
+.hr-todo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border: 0.5px solid rgb(39, 39, 39);
+  border-bottom: none;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: -1.3rem;
+}
+
+.nav-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2rem;
+}
+
+.nav-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 6rem;
 }
 
 .button-delete {
@@ -107,6 +147,7 @@ hr {
 }
 
 .checkbox-container {
+  position: relative;
   padding-left: 3rem;
   margin-bottom: 2.5rem;
   display: flex;
@@ -117,7 +158,7 @@ hr {
 .checkbox {
   position: absolute;
   margin-top: 0.3rem;
-  left: 2rem;
+  left: -1.5rem;
   height: 1rem;
   width: 2rem;
   border: 1px solid rgb(96, 96, 96);
@@ -131,13 +172,30 @@ hr {
   text-align: center;
   line-height: 1.8rem;
   transform: scale(0);
-  transition: transform 0.1s ease;
+  transition: transform 0.05s ease;
 }
 
 input[type='checkbox']:checked + .checkbox::after {
   transform: scale(1);
   height: 1rem;
   background-color: #fff;
+}
+
+.components {
+  display: grid;
+  gap: 2rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  /* overflow-x: auto; */
+  /* overscroll-behavior-inline: contain; */
+  /* overflow: auto; */
+  height: 100vh;
+}
+
+.component-card {
+  margin-top: 16rem;
+  width: 100%;
+  padding: 2rem;
 }
 
 .container {
@@ -160,7 +218,7 @@ input[type='checkbox']:checked + .checkbox::after {
 }
 
 .todo-input-qty {
-  width: 15%;
+  width: 25%;
 }
 
 .todo-list {
@@ -174,3 +232,15 @@ input[type='checkbox']:checked + .checkbox::after {
 }
 
 /* test */
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 2rem;
+}
+
+.snaps-inline > * {
+  scroll-snap-align: start;
+}
+
+/* ::-webkit-scrollbar {
+  width: 1rem
+} */
