@@ -11,6 +11,7 @@ html {
 }
 
 body {
+  width: 100vw;
 }
 
 h1 {
@@ -35,6 +36,7 @@ h3 {
   letter-spacing: 0;
   line-height: 1rem;
 }
+
 h4 {
   font-size: 1.8rem;
   font-weight: 700;
@@ -111,7 +113,7 @@ hr {
   color: #fff;
   background-color: #fff;
   position: absolute;
-  margin-left: 2rem;
+
   margin-right: 2rem;
   top: 10.45rem;
 }
@@ -129,9 +131,8 @@ hr {
 
 .nav-app {
   position: fixed;
-  top: 0;
-  left: 0;
   padding: 2rem;
+  width: 100vw;
 }
 
 .nav-title {
@@ -139,6 +140,22 @@ hr {
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 6rem;
+}
+
+.nav-scroller {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.nav-indicator {
+  height: 0.2rem;
+  width: 20%;
+}
+
+.nav-indicator-active {
+  background-color: #fff;
 }
 
 .button-delete {
@@ -234,13 +251,16 @@ input[type='checkbox']:checked + .checkbox::after {
 /* test */
 .snaps-inline {
   scroll-snap-type: inline mandatory;
-  scroll-padding-inline: 2rem;
+  /* scroll-padding-inline: 1rem; */
 }
 
 .snaps-inline > * {
   scroll-snap-align: start;
 }
 
-/* ::-webkit-scrollbar {
-  width: 1rem
-} */
+::-webkit-scrollbar,
+::-webkit-scrollbar-corner {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* display: none; */
+}

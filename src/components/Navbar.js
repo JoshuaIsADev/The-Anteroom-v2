@@ -1,41 +1,33 @@
 import { useState, useEffect } from 'react';
 import '../index.css';
 
-function Scroller() {
-  const initialLeftPercentage =
-    parseFloat(sessionStorage.getItem('leftPercentage')) || 25;
-  const [scrollLeftPercentage, setScrollLeftPercentage] = useState(
-    initialLeftPercentage
+function NavIndicator() {
+  const slide = 5;
+
+  return (
+    <>
+      <button
+        className={`nav-indicator ${slide == 1 ? 'nav-indicator-active' : ''}`}
+      ></button>
+      <button
+        className={`nav-indicator ${slide == 2 ? 'nav-indicator-active' : ''}`}
+      ></button>
+      <button
+        className={`nav-indicator ${slide == 3 ? 'nav-indicator-active' : ''}`}
+      ></button>
+      <button
+        className={`nav-indicator ${slide == 4 ? 'nav-indicator-active' : ''}`}
+      ></button>
+      <button
+        className={`nav-indicator ${slide == 5 ? 'nav-indicator-active' : ''}`}
+      ></button>
+    </>
   );
-
-  const handleScroll = () => {
-    const scrollPosition = window.scrollX;
-    const containerWidth =
-      document.documentElement.scrollWidth - window.innerWidth;
-    const newLeftPercentage = (scrollPosition / containerWidth) * 75;
-    setScrollLeftPercentage(newLeftPercentage);
-    sessionStorage.setItem('leftPercentage', newLeftPercentage);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const hrIndicatorStyle = {
-    left: `${scrollLeftPercentage}%`,
-  };
-
-  return <hr className='hr-indicator' style={hrIndicatorStyle} />;
-
-  // )
 }
 
 function Navbar() {
   return (
-    <nav className='container nav-app'>
+    <nav className='nav-app'>
       <div className='nav-title'>
         <h1>The Anteroom</h1>
         <div>
@@ -44,9 +36,9 @@ function Navbar() {
         </div>
       </div>
       <div className='nav-scroller'>
-        <Scroller />
         {/* <hr className='hr-indicator' /> */}
-        <hr className='hr-slider' />
+        {/* <hr className='hr-slider' /> */}
+        <NavIndicator />
       </div>
     </nav>
   );
