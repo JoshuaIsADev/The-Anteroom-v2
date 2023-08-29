@@ -1,11 +1,11 @@
 import Navbar from './components/Navbar';
 import GoogleSearch from './components/GoogleSearch';
-import Calendar from './components/Calendar';
-import Weather from './components/Weather';
-import ToDo from './components/ToDo';
-import Headlines from './components/Headlines';
-import Stocks from './components/Stocks';
-import Art from './components/Art';
+import Calendar from './pages/Calendar';
+import Weather from './pages/Weather';
+import ToDo from './pages/ToDo';
+import Headlines from './pages/Headlines';
+import Stocks from './pages/Stocks';
+import Art from './pages/Art';
 import './index.css';
 
 function App() {

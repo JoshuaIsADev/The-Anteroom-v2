@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Button from './Button';
 import '../index.css';
 
 function Navbar() {
@@ -11,11 +12,16 @@ function Navbar() {
           <h2>Mon. Aug. 21. 23</h2>
         </div>
       </div>
-      <div>
+      <div className='nav-tabs'>
         {/* <hr className='hr-indicator' /> */}
         {/* <hr className='hr-slider' /> */}
         {/* <Slider /> */}
-        {<Tabs />}
+        {/* {<Tabs />} */}
+        <Button navigation>ToDo</Button>
+        <Button navigation>Weather</Button>
+        <Button navigation>Headlines</Button>
+        <Button navigation>Stocks</Button>
+        <Button navigation>Art</Button>
       </div>
     </nav>
   );

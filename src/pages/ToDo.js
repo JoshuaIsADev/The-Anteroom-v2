@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '../components/Button';
 
 export default function ToDo() {
   const [items, setItems] = useState([]);
@@ -78,7 +79,7 @@ function Form({ onAddItems }) {
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
           />
-          <button>+</button>
+          <Button add>+</Button>
         </div>
       </form>
     </>
@@ -120,9 +121,9 @@ function Item({ item, onDeleteItem, onToggleItem }) {
             {item.description} {item.quantity}
           </span>
         </label>
-        <button className='button-delete' onClick={() => onDeleteItem(item.id)}>
+        <Button remove onClick={() => onDeleteItem(item.id)}>
           &times;
-        </button>
+        </Button>
       </li>
       <hr className='hr-todo' />
     </>
