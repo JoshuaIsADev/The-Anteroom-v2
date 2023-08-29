@@ -63,6 +63,10 @@ ul {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 input[type='text'],
 [type='number'] {
   width: 100%;
@@ -142,20 +146,37 @@ hr {
   margin-bottom: 6rem;
 }
 
-.nav-scroller {
+.nav-tabs {
   display: flex;
   flex-direction: row;
   gap: 1rem;
   justify-content: space-between;
 }
 
-.nav-indicator {
-  height: 0.2rem;
+.nav-tab {
+  height: 2rem;
   width: 20%;
+  background-color: #0f1011;
+  border-bottom: 0.2rem solid #1d1e1f;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-tab.active {
+  border-bottom: 0.2rem solid #fff;
+}
+
+.nav-indicator {
+  height: 2rem;
+  width: 20%;
+  background-color: #0f1011;
+  border-bottom: 0.2rem solid #1d1e1f;
+  cursor: pointer;
 }
 
 .nav-indicator-active {
-  background-color: #fff;
+  background-color: #0f1011;
+  border-bottom: 0.2rem solid #fff;
 }
 
 .button-delete {
@@ -181,6 +202,7 @@ hr {
   border: 1px solid rgb(96, 96, 96);
   border-radius: 0px;
 }
+
 .checkbox::after {
   content: ' '; /* Unicode character for checkmark */
   font-size: 16px;
@@ -203,21 +225,23 @@ input[type='checkbox']:checked + .checkbox::after {
   gap: 2rem;
   grid-auto-flow: column;
   grid-auto-columns: 100%;
-  /* overflow-x: auto; */
-  /* overscroll-behavior-inline: contain; */
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
   /* overflow: auto; */
   height: 100vh;
+  scroll-snap-type: x mandatory;
 }
 
 .component-card {
-  margin-top: 16rem;
+  padding: 16rem 2rem 2rem 2rem;
   width: 100%;
-  padding: 2rem;
+  /* padding: 2rem; */
+  scroll-snap-align: start;
 }
 
-.container {
+/* .container {
   width: 100%;
-}
+} */
 
 .component-title {
   margin-bottom: 2.5rem;
@@ -262,5 +286,6 @@ input[type='checkbox']:checked + .checkbox::after {
 ::-webkit-scrollbar-corner {
   scroll-behavior: smooth;
   scrollbar-width: none;
+
   /* display: none; */
 }

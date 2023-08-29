@@ -15,19 +15,17 @@ function App() {
       <main className='components'>
         {/* <GoogleSearch /> */}
         {/* <Calendar /> */}
-        <section className='component-card'>
-          <ToDo />
-        </section>
-        <section className='component-card'>
+        <ToDo />
+        <section id='weather' className='component-card'>
           <Weather />
         </section>
-        <section className='component-card'>
+        <section id='headlines' className='component-card'>
           <Headlines />
         </section>
-        <section className='component-card'>
+        <section id='stocks' className='component-card'>
           <Stocks />
         </section>
-        <section className='component-card'>
+        <section id='art' className='component-card'>
           <Art />
         </section>
       </main>

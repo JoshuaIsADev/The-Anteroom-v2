@@ -20,7 +20,7 @@ export default function ToDo() {
   }
 
   return (
-    <div className='container'>
+    <section id='todo' className='component-card'>
       <Logo />
       <Form onAddItems={handleAddItems} />
       <ToDoList
@@ -29,9 +29,11 @@ export default function ToDo() {
         onToggleItem={handleToggleItem}
       />
       <Stats items={items} />
-    </div>
+    </section>
   );
 }
+
+/////////////////////////////////
 
 function Logo() {
   return (
